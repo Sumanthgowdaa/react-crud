@@ -1,27 +1,28 @@
-import axios from "axios";
+import axios from 'axios'
 
-//instance
+// instance
 const axiosIns = axios.create({
     baseURL: "http://localhost:5600"
 })
 
-//read All
-const readAllUser = () => {
+// read all
+export const readAllUser =  () => {
     return axiosIns.request({
         url: `/users`,
         method: "GET"
     })
 }
-//read Single
-const readSingleUser = () => {
+
+// read single
+export const readSingleUser  =  (id) => {
     return axiosIns.request({
-        url: `/users`,
+        url: `/users/${id}`,
         method: "GET"
     })
 }
 
 // create
-export const createUser = () => {
+export const userCreate  =  (user) => {
     return axiosIns.request({
         url: `/users`,
         method: "POST",
@@ -29,19 +30,20 @@ export const createUser = () => {
     })
 }
 
-//update
-export const updateUser = () => {
+
+// update
+export const userUpdate  =  ({user, id}) => {
     return axiosIns.request({
         url: `/users/${id}`,
         method: "PATCH",
         data: user
     })
 }
-//delete
-export const deleteUser = () => {
+
+// delete
+export const userDelete  =  (id) => {
     return axiosIns.request({
         url: `/users/${id}`,
-        method: "DELETE",
-        
+        method: "DELETE"
     })
 }
